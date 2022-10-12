@@ -9,7 +9,8 @@ on:
 jobs:
   build:
     name: Build OpenCV / OpenCV-Contrib xcframework
-    runs-on: macos-latest
+    #runs-on: macos-latest
+    runs-on: macOS-12
     env:
       OCV_VER: 4.6.0
 
