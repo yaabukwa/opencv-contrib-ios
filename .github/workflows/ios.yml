@@ -10,11 +10,34 @@ jobs:
   build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-latest
+    env:
+      OCV_VER: 4.6.0
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - name: Cache Downloads
+        id: cache-downloads
+        uses: actions/cache@v3
+        with:
+            path: |
+              ./cache/
+            key: ${{ hashFiles('./cache/opencv-${OCV_VER}.tar.gz') }}-${{ hashFiles('./cache/${OCV_VER}.tar.gz') }}
+
+      - name: Download if Needed
+        if: steps.cache-downloads.outputs.cache-hit != 'true'
+        run: |
+            mkdir -p ./cache
+            curl -o ./cache/opencv-${OCV_VER}.tar.gz -L "https://github.com/opencv/opencv/archive/refs/tags/${OCV_VER}.tar.gz"
+            curl -o ./cache/opencv_contrib-${OCV_VER}.tar.gz -L "https://github.com/opencv/opencv_contrib/archive/refs/tags/${OCV_VER}.tar.gz"
+
+      - name: Extract OpenCV & OpenCV Contrib
+        run: |
+          tar xf ./cache/opencv-${OCV_VER}.tar.gz
+          tar xf ./cache/opencv_contrib-${OCV_VER}.tar.gz
+        
       - name: Build OpenCV-contrib
         run: |
-          bash ./prepare-pod.sh
+          #bash ./prepare-pod.sh
       
