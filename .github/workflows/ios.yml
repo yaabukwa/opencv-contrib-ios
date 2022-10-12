@@ -76,7 +76,7 @@ jobs:
         with:
           retention-days: 90
           path: 
-            ./opencv-build/opencv_contrib-${OCV_VER}-ios.zip .
+            ./opencv-build/opencv_contrib-${OCV_VER}-ios.zip
 
       
 
