@@ -1,0 +1,20 @@
+name: Build OpenCV-contrib for iOS
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build and Test default scheme using any available iPhone simulator
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build OpenCV-contrib
+        run: |
+          bash ./prepare-pod.sh
+      
