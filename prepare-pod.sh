@@ -78,7 +78,7 @@ function zip_package {
 
 #install_prerequisites
 type curl grep sed tr brew cmake git python3 2>&1
-#prepare_compiler
-#download_extract
+prepare_compiler
+download_extract
 build_xframework
 zip_package
