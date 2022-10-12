@@ -55,23 +55,13 @@ jobs:
                   --without objc \
                   --without alphamat \
                   --without cvv \
-                  --without freetype \
-                  --without hdf \
                   --without java \
                   --without julia \
                   --without matlab \
                   --without ovis \
                   --without python2 \
                   --without python3 \
-                  --without sfm \
-                  --without superres \
-                  --without ts \
-                  --without viz \
-                  --without datasets \
-                  --without dnn \
-                  --without dnn_objdetect \
-                  --without dnn_superres \
-                  --without wechat_qrcode
+                  --without datasets
 
       - name: Zip xcframework
         run: |
@@ -79,13 +69,14 @@ jobs:
           zip -r opencv_contrib-${OCV_VER}-ios.zip opencv2.xcframework
           cd ..
           mv ./opencv-build/opencv_contrib-${OCV_VER}-ios.zip .
+          ls -l
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           retention-days: 90
           path: 
-            ./opencv-build/opencv_contrib-*-ios.zip
+            ./opencv-build/opencv_contrib-${OCV_VER}-ios.zip .
 
       
 
