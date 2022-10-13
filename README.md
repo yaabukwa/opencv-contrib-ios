@@ -1,4 +1,4 @@
-# opencv-contrib-ios (4.6.0)
+# opencv-contrib-ios (4.6.0) [![Status](https://github.com/yaabukwa/opencv-contrib-ios/actions/workflows/ios.yml/badge.svg)](https://github.com/yaabukwa/opencv-contrib-ios/actions/workflows/ios.yml)
 
 opencv-contrib-ios provides iOS xcframework with x64, arm64 precompiled binaries for device and simulator. 
 It also provides podspec that can be used to seamlessly integrat opencv/contrib libraries in your application.
