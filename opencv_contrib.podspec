@@ -58,8 +58,8 @@ Pod::Spec.new do |s|
                    }
     s.authors          = 'https://github.com/opencv/opencv/graphs/contributors'
     s.documentation_url = 'https://docs.opencv.org/master/'
-    s.source           = { :http => "https://github.com/IntelAICV/opencv-contrib-ios/releases/download/0.0.1/opencv_contrib-#{s.version.to_s}-ios.zip",
-                           :sha256 => 'e8fd75d02b205372b8afcbee303600bce5fea9188025ec75d6970223ed3826c4' }
+    s.source           = { :http => "https://github.com/yaabukwa/opencv-contrib-ios/releases/download/v1.0.0/opencv_contrib-#{s.version.to_s}-ios.zip",
+                           :sha256 => 'a9e8b61f7248f246c18b2ae4ac1457ce266962d86f487cce256c2d852e3acdfb' }
     s.frameworks       = 'Accelerate', 'AssetsLibrary', 'AVFoundation', 'CoreGraphics', 'CoreImage', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'UIKit'
     s.swift_version = '5.3'
 
