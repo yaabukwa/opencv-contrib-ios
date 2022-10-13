@@ -44,30 +44,13 @@ jobs:
           tar xf ./cache/opencv_contrib-${OCV_VER}.tar.gz
           ls -l
         
-      - name: Build OpenCV / OpenCV-Contrib
-        run: |
-          python3 opencv-${OCV_VER}/platforms/apple/build_xcframework.py \
-                  --framework_name opencv2 \
-                  --out ./opencv-build \
-                  --contrib opencv_contrib-${OCV_VER} \
-                  --iphoneos_archs arm64 \
-                  --iphonesimulator_archs x86_64,arm64 \
-                  --build_only_specified_archs \
-                  --without objc \
-                  --without alphamat \
-                  --without cvv \
-                  --without java \
-                  --without julia \
-                  --without matlab \
-                  --without ovis \
-                  --without python2 \
-                  --without python3 \
-                  --without datasets
 
       - name: Zip xcframework
         run: |
+          mkdir ./opencv-build
           cd ./opencv-build 
-          zip -r opencv_contrib-${OCV_VER}-ios.zip opencv2.xcframework
+          touch opencv_contrib-${OCV_VER}-ios.zip
+          #zip -r opencv_contrib-${OCV_VER}-ios.zip opencv2.xcframework
           ls -l
           
       - name: Upload a Build Artifact
@@ -76,7 +59,7 @@ jobs:
           retention-days: 90
           if-no-files-found: error
           path:
-            opencv-build/opencv_contrib-${OCV_VER}-ios.zip
+            opencv-build/opencv_contrib-*.zip
 
       
 
