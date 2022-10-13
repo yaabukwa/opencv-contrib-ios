@@ -68,16 +68,14 @@ jobs:
         run: |
           cd ./opencv-build 
           zip -r opencv_contrib-${OCV_VER}-ios.zip opencv2.xcframework
-          cd ..
-          mv ./opencv-build/opencv_contrib-${OCV_VER}-ios.zip .
-          ls -l
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
-        with:
+        with:        
           retention-days: 90
           path: 
-            ./opencv-build/opencv_contrib-${OCV_VER}-ios.zip
+            opencv_contrib-${OCV_VER}-ios.zip
+          if-no-files-found: error
 
       
 
