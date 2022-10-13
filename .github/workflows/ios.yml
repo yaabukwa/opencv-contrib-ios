@@ -22,14 +22,19 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
-        
+      
+      - name: Prepare Cache Key
+        run: |
+          echo "https://github.com/opencv/opencv/archive/refs/tags/${OCV_VER}.tar.gz" >> cache_key.txt
+          echo "https://github.com/opencv/opencv_contrib/archive/refs/tags/${OCV_VER}.tar.gz" >> cache_key.txt
+          
       - name: Cache Downloads
         id: cache-downloads
         uses: actions/cache@v3
         with:
             path: |
               ./cache/
-            key: ${{ hashFiles('./cache/opencv-${OCV_VER}.tar.gz') }}-${{ hashFiles('./cache/${OCV_VER}.tar.gz') }}
+            key: ${{ hashFiles('cache_key.txt') }}
 
       - name: Download if Needed
         if: steps.cache-downloads.outputs.cache-hit != 'true'
